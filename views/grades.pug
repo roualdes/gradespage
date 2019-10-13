@@ -1,0 +1,35 @@
+extends layout
+
+block css
+  script(src="/javascripts/plotly-cartesian.min.js")
+  script(src="/javascripts/grades.js")
+  script.
+        makePlots();
+  script.
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+
+
+block content
+  div(id="Table" class="clearfix container-fluid" data-num="0")
+    div(class="clearfix control-row" id="TableContainer")
+      div(class="clearfix col-xs-4 col-sm-3 col-md-2" id="TableSelector")
+        | Component:&nbsp;
+      div(class="col-xs-6 col-sm-4 col-md-4")
+        select(class="element form-control")
+      div(class="col-xs-2 col-sm-4 col-md-6")
+        a(href="#" data-toggle="tooltip" title="Table lists all your grades within the component of your choice." data-placement="right")
+          span(class="glyphicon glyphicon-info-sign" aria-hidden="true")
+    table(id="grdTable" class="table")
+
+  div(id="Histogram" class="clearfix container-fluid" data-num="1")
+    div(class="clearfix control-row" id="HistContainer")
+      div(class="clearfix col-xs-4 col-sm-3 col-md-2" id="HistSelector")
+        | Assignment:&nbsp;
+      div(class="col-xs-6 col-sm-4 col-md-4")
+        select(class="assignment form-control")
+      div(class="col-xs-2 col-sm-4 col-md-6")
+        a(href="#" data-toggle="tooltip" data-placement="right" title="Plot displays your grade, as a vertical black bar of height one, relative to the class grades, presented as a histogram, on the assignment of your choice.")
+          span(class="glyphicon glyphicon-info-sign" aria-hidden="true")
+    div(class="plot" id="histogram")
