@@ -40,7 +40,10 @@ function makePlots() {
             var columns = getTableColumns(chosenElement);
             setOptions(columns, assignmentSelector);
 
-            var table = d3.select("#grdTable"),
+            var table = d3.select("#grdTable")
+			.style('display', 'block')
+			.style('overflow-x', 'auto')
+			.style('white-space', 'nowrap'),
                 thead = table.append("thead"),
                 tbody = table.append("tbody");
 
